@@ -1,53 +1,47 @@
-#==== BeXiCov: 
-Best-fit Xi covariance matrix
-python package to construct the semi-analytical Gaussian covariance matrix of the measured 2PCF multipoles (pre and post-reconstruction)
+# BeXiCov: Best-fit Xi Covariance Matrix
 
-code used for the DR1-Euclid forecast on BAO measurements (Sarpa et al in prep)
+**BeXiCov** is a Python package that constructs the semi-analytical Gaussian covariance matrix for the measured multipoles of the two-point correlation function (2PCF) pre and post-reconstruction. It was developed for the DR1-Euclid forecast on BAO measurements (Sarpa et al., in prep).
+
+## Modules
+
+- **Models.py**: Contains the routines used to compute the power spectrum and correlation function models.
+- **Covariance.py**: Generates the theoretical and best-fit covariance matrix reproducing the data.
+
+## Inputs
+
+- Measured two-point correlation function multipoles.
+- Fiducial cosmology.
+- Survey volume.
+- Survey mean number density.
+- `rectype`:
+  - `''`: Pre-reconstruction.
+  - `'rec-iso'`: Zel'dovich post-reconstruction with RSD removal.
+  - `'rec-sym'`: Zel'dovich post-reconstruction without RSD removal.
+- `space`: `'RealSpace'` or `'RedshiftSpace'`.
+
+## Outputs
+
+- Covariance matrix of the two-point correlation function multipoles evaluated at the data separation vector.
+
+## Installation
+
+1. Clone the BeXiCov repository
+2. Clone the GaussianCovariance repository:
+   - git clone https://gitlab.com/veropalumbo.alfonso/gaussiancovariance/
+   - cd gaussiancovariance
+   - pip insall.
+3. Install Camb via: conda install -c conda-forge camb
+4. Install Hankl via: pip install hankl
 
 
-#---- Modules
-- Models.py:      
-   containes the routines used to compute the power-specturm and correlation fucntion models
-- Covariance.py
-    module generate the theoretical and best fit covariance matrix reproducinf the data
+## Examples
 
-#---- Inputs: 
-- measured two-point correlation fucntion multipoles
-- fiducial cosmology
-- survey volume
-- survey mean number density
-- rectype: 
-    '': for pre-reconstruction
-    'rec-iso': for Zel'dovich post-reconstruction, with RSD removal
-    'rec-sym': for Zel'dovich post-reconstruction, without RSD removal
--space: 'RealSpace' or 'RedshiftSpace
+Provide examples of how to use the BeXiCov package with code snippets and explanations.
 
-#---- Outputs: 
-- covariance matrix of the two-point correlation function multipoles evaluated at the data separation vector
+## Code Description
 
+- Generates the theoretical covariance matrix based on 1st order Lagrangian perturbation theory (Padmanabhan et al. 2009, Sarpa et al. 2023).
+- Models the two-point correlation function multipoles using the damped correlation function model (Scoccimarro...) and polynomial broad-band.
+- Computes the Hankel transform of the best-fit 2PCF to obtain the best-fit anisotropic power spectrum.
+- Generates the Gaussian covariance matrix from the best-fit anisotropic power spectrum.
 
-#---- installation
-gitclone ...
-
-pip install .
-
-To build theoretical covariances:
-- GaussianCovariance
-    git clone https://gitlab.com/veropalumbo.alfonso/gaussiancovariance/
-    cd gaussiancovariance
-    pip insall.
-  
-
-The routine to generate the template for the 2PCF multipoles requires
-- camb
-    conda install -c conda-forge camb
-- hankl
-    pip install hankl
-
-#---- Examples:
-
-#---- Code description:
-- generates the theoretical covariance matrix based on 1st order Lagrangian perturbation theory (padmanabhan et al 2009, Sarpa et al 2023.)
-- models the 2PCF multipoles using the damped correlation function modelm (Scocciamarro ...) + polynomial broad-band
-- computes the hankle tranform of the best fit 2PCF to obtsined the best-fit anisotropic power-spectrum
-- generate the gaussian covariance matrix from the best-fit anisotropic power-spectrum
