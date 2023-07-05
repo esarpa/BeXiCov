@@ -1,0 +1,7 @@
+numpy
+scipy
+matplotlib
+GaussianCovariance
+hankl
+Minuit
+camb
