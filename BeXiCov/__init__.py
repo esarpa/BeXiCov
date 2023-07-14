@@ -3,5 +3,6 @@
     
     Models
     Covariance
+    utils
     
 '''
