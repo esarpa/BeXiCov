@@ -1,0 +1,6 @@
+matplotlib
+numpy
+iMinuit
+camb
+hankl
+scipy
